@@ -37,7 +37,6 @@ h1 {
 
 label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
 }
 
@@ -72,8 +71,7 @@ button {
 
 .stock-list {
   margin-top: 40px;
-  width: 100%;
-  max-width: 600px;
+  width: 62%;
 }
 
 .stock-item {
@@ -83,4 +81,5 @@ button {
   background: white;
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
 }

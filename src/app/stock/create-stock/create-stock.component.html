@@ -82,14 +82,16 @@
 
   <div class="stock-list" *ngIf="stockList.length > 0">
     <h2>Stock List</h2>
-    <div class="stock-item" *ngFor="let stockItem of stockList">
-      <div class="stock-info">
-        <h3>{{ stockItem.name }} ({{ stockItem.code }})</h3>
-        <p>Price: ${{ stockItem.price }}</p>
-        <p>Previous Price: ${{ stockItem.previousPrice }}</p>
-        <p>Exchange: {{ stockItem.exchange }}</p>
+    @for (stockItem of stockList; track $index) {
+      <div class="stock-item">
+        <div class="stock-info">
+          <h3>{{ stockItem.name }} - {{ stockItem.code }}</h3>
+          <p>Price: ${{ stockItem.price }}</p>
+          <p>Previous Price: ${{ stockItem.previousPrice }}</p>
+          <p>Exchange: {{ stockItem.exchange }}</p>
+        </div>
       </div>
-    </div>
+    }
   </div>
 
   <div class="debug-info">
