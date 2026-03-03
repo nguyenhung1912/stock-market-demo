@@ -35,7 +35,7 @@ export class CreateStockReactiveComponent  {
     console.log('Form Value:', this.stockForm.value);
     console.log('Form Status:', this.stockForm.status);
     if(this.stockForm.invalid) {
-        alert("Form chưa hợp lệ, vui lòng kiểm tra lại!");
+        alert("Form chưa hợp lệ");
     } else {
         alert("Submit thành công!");
     }

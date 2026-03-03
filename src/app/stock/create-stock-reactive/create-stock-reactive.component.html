@@ -10,13 +10,9 @@
         class="form-control"
         [class.invalid]="stockForm.get('name')?.invalid && stockForm.get('name')?.touched"
       />
-
-      <div
-        *ngIf="stockForm.get('name')?.invalid && stockForm.get('name')?.touched"
-        class="error-msg"
-      >
-        Name is required (min 2 chars)
-      </div>
+      @if (stockForm.get('name')?.invalid && stockForm.get('name')?.touched) {
+        <div class="error-msg">Name is required (min 2 chars)</div>
+      }
     </div>
 
     <div class="form-group">
@@ -27,12 +23,9 @@
         class="form-control"
         [class.invalid]="stockForm.get('code')?.invalid && stockForm.get('code')?.touched"
       />
-      <div
-        *ngIf="stockForm.get('code')?.invalid && stockForm.get('code')?.touched"
-        class="error-msg"
-      >
-        Code is required
-      </div>
+      @if (stockForm.get('code')?.invalid && stockForm.get('code')?.touched) {
+        <div class="error-msg">Code is required</div>
+      }
     </div>
 
     <div class="form-group">
@@ -43,12 +36,9 @@
         class="form-control"
         [class.invalid]="stockForm.get('price')?.invalid && stockForm.get('price')?.touched"
       />
-      <div
-        *ngIf="stockForm.get('price')?.invalid && stockForm.get('price')?.touched"
-        class="error-msg"
-      >
-        Price must be >= 0
-      </div>
+      @if (stockForm.get('price')?.invalid && stockForm.get('price')?.touched) {
+        <div class="error-msg">Price must be >= 0</div>
+      }
     </div>
 
     <div class="btn-group">
@@ -62,10 +52,12 @@
     <p><strong>Form Control status:</strong> {{ stockForm.status }}</p>
   </div>
 
-  <div class="stock-list" *ngIf="stockList.length > 0">
-    <h3>Stock List</h3>
-    <div *ngFor="let item of stockList" class="stock-item">
-      {{ item.name }} ({{ item.code }}) - ${{ item.price }}
+  @if (stockList.length > 0) {
+    <div class="stock-list">
+      <h3>Stock List</h3>
+      @for (item of stockList; track $index) {
+        <div class="stock-item">{{ item.name }} - {{ item.code }} - {{ item.price }}$</div>
+      }
     </div>
-  </div>
+  }
 </div>
