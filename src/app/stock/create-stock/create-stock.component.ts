@@ -16,7 +16,7 @@ export class CreateStock {
   public stockList: Stock[] = [];
 
   constructor() {
-    this.stock = new Stock('', '', 0, 0, false, '');
+    this.stock = new Stock('', '', 0, 0, false, 'NASDAQ');
   }
 
   createStock(stockForm: NgForm) {
@@ -31,12 +31,11 @@ export class CreateStock {
           this.stock.exchange,
         ),
       );
-
+      stockForm.resetForm({
+        exchange: 'NASDAQ'
+      });
       this.stock = new Stock('', '', 0, 0, false, 'NASDAQ');
-      this.stockList.push(new Stock('Apple Inc', 'AAPL', 150, 140, true, 'NASDAQ'));
-      this.stockList.push(new Stock('Google', 'GOOG', 200, 210, false, 'NYSE'));
       this.confirmed = false;
-      stockForm.resetForm();
     }
   }
 }

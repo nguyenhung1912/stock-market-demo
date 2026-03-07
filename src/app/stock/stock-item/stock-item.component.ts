@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Stock } from "../../model/stock";
 
 @Component({
@@ -8,10 +8,10 @@ import { Stock } from "../../model/stock";
 })
 
 export class StockItemComponent implements OnInit{
+    @Input() stocks: Stock[] = [];
+
     public stock!: Stock;
-    
-    constructor() {}
-    
+        
     ngOnInit(): void {
         this.stock = new Stock('Test Stock Company', 'TSC', 85, 80, false, 'NASDAQ');
     }

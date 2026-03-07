@@ -15,8 +15,8 @@ import { Stock } from '../../model/stock';
   styleUrl: './create-stock-reactive.component.css',
 })
 export class CreateStockReactiveComponent  {
-  public stockForm!: FormGroup;
-  public stockList: Stock[] = [];
+  stockForm!: FormGroup;
+  stockList: Stock[] = [];
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -49,7 +49,7 @@ export class CreateStockReactiveComponent  {
         formValues.name,
         formValues.code,
         formValues.price,
-        formValues.price, 
+        formValues.previousPrice, 
         false,            
         formValues.exchange
       );
