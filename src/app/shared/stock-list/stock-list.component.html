@@ -1,1 +1,5 @@
-<p>stock-list.component works!</p>
+<div class="stock-list">
+  @for (item of stocks; track item.code) {
+    <app-stock-item [stock]="item" />
+  }
+</div>

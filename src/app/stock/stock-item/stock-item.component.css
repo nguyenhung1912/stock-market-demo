@@ -1,33 +1,14 @@
-.stock-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
-
-.stock-container h1 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  letter-spacing: -1px;
-  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+:host {
+  display: block;
 }
 
 .stock-card {
-  width: 100%;
-  max-width: 350px;
+  width: 300px;
   background-color: var(--secondary);
-  border: 3px solid var(--primary);
-  box-shadow: var(--shadow);
-  padding: 25px;
-  text-align: center;
-  transition: transform 0.2s ease;
-  position: relative;
-}
-
-.stock-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 10px 10px 0px var(--primary);
+  border: 2px solid #000000;
+  padding: 10px;
+  text-align: left;
+  border-radius: 4px;
 }
 
 .stock-card button {
@@ -49,8 +30,7 @@
 
 .stock-name {
   font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
@@ -61,9 +41,9 @@
 }
 
 .positive {
-  color: green;
+  color: #28a745;
 }
 
 .negative {
-  color: red;
+  color: #dc3545;
 }

@@ -1,15 +1,15 @@
 <div class="stock-container">
-  <h1>Welcome to Stock Market!</h1>
   <div class="stock-card">
-    <div class="stock-name">{{ stock.name }} - {{ stock.code }}</div>
+    <div class="stock-name">{{ stock.name }} {{ stock.code }}</div>
+    <div class="stock-exchange">{{ stock.exchange }}</div>
     <div
       class="stock-price"
       [class.positive]="stock.isPositiveChange()"
-      [class.negative]="!stock.isPositiveChange()"
+      [style.color]="stock.isPositiveChange() ? 'green' : 'red'"
     >
-      {{ stock.price }}
+      $ {{ stock.price }}
     </div>
-    <button (click)="toggleFavorite($event)" [class.selected]="stock.favorite">
+    <button (click)="toggleFavorite($event)">
       {{ stock.favorite ? 'Remove from Favorite' : 'Add to Favorite' }}
     </button>
   </div>

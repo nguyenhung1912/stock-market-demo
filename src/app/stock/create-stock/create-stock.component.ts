@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Stock } from '../../model/stock';
 
 @Component({
-  selector: 'create-stock',
+  selector: 'app-create-stock',
   imports: [CommonModule, FormsModule],
   templateUrl: './create-stock.component.html',
   styleUrl: './create-stock.component.css',
