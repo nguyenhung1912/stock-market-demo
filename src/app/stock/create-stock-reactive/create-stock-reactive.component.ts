@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stock } from '../../model/stock';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-stock-reactive',
@@ -13,9 +14,7 @@ export class CreateStockReactiveComponent {
   stockForm!: FormGroup;
   @Output() stockCreated = new EventEmitter<Stock>();
 
-successMessage: string ='';
-
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {
     this.createForm();
   }
 
@@ -25,6 +24,7 @@ successMessage: string ='';
       code: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, [Validators.required, Validators.min(0)]],
       exchange: ['NASDAQ', Validators.required],
+      confirm: [false, Validators.requiredTrue]
     });
   }
 
@@ -32,9 +32,9 @@ successMessage: string ='';
     console.log('Form Value:', this.stockForm.value);
     console.log('Form Status:', this.stockForm.status);
     if (this.stockForm.invalid) {
-      alert('Form chưa hợp lệ');
+      alert('Form is invalid');
     } else {
-      alert('Submit thành công!');
+      alert('Form submitted successfully!');
     }
   }
 
@@ -51,7 +51,8 @@ successMessage: string ='';
       );
 
       this.stockCreated.emit(newStock);
-      this.successMessage = `Đã tạo thành công cổ phiếu có Code: ${formValues.code}`;
+      this.toastr.success(`Stock created successfully: ${formValues.code}`);
+
       this.stockForm.reset({ price: 0, exchange: 'NASDAQ' });
     } else {
       this.stockForm.markAllAsTouched();

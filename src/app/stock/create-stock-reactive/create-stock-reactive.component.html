@@ -1,12 +1,6 @@
 <div class="form-container">
   <h2>Create Stock Form</h2>
 
-  @if (successMessage) {
-    <div class="success-message">
-      {{ successMessage }}
-    </div>
-  }
-
   <form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Name</label>
@@ -15,6 +9,7 @@
         formControlName="name"
         class="form-control"
         [class.invalid]="stockForm.get('name')?.invalid && stockForm.get('name')?.touched"
+        placeholder="e.g. Apple Inc."
       />
       @if (stockForm.get('name')?.invalid && stockForm.get('name')?.touched) {
         <div class="error-msg">Name is required (min 2 chars)</div>
@@ -28,6 +23,7 @@
         formControlName="code"
         class="form-control"
         [class.invalid]="stockForm.get('code')?.invalid && stockForm.get('code')?.touched"
+        placeholder="e.g. AAPL"
       />
       @if (stockForm.get('code')?.invalid && stockForm.get('code')?.touched) {
         <div class="error-msg">Code is required</div>
@@ -45,6 +41,11 @@
       @if (stockForm.get('price')?.invalid && stockForm.get('price')?.touched) {
         <div class="error-msg">Price must be >= 0</div>
       }
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" formControlName="confirm" id="confirmCheck" />
+      <label for="confirmCheck"> I confirm that the information provided above is accurate! </label>
     </div>
 
     <div class="btn-group">
