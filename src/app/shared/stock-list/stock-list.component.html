@@ -1,5 +1,59 @@
-<div class="stock-list">
-  @for (item of stocks; track item.code) {
-    <app-stock-item [stock]="item" />
-  }
+<div class="list-container">
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search by name or code..."
+      [(ngModel)]="searchText"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <div class="list-header">
+    <div class="col">Code</div>
+    <div class="col">Name</div>
+    <div class="col">Price</div>
+    <div class="col">Exchange</div>
+    <div class="col actions-header">Actions</div>
+  </div>
+
+  <div class="list-body">
+    @for (item of filteredStocks; track item.code) {
+      <app-stock-item
+        [stock]="item"
+        (view)="openViewDialog($event)"
+        (update)="openUpdateDialog($event)"
+        (delete)="deleteStock($event)"
+      >
+      </app-stock-item>
+    }
+  </div>
 </div>
+
+@if (selectedStock) {
+  <div class="dialog-overlay">
+    <div class="dialog-box">
+      <h2>{{ dialogMode === 'view' ? 'Stock Details' : 'Update Stock' }}</h2>
+
+      <div class="dialog-content">
+        @if (dialogMode === 'view') {
+          <p><strong>Code:</strong> {{ selectedStock.code }}</p>
+          <p><strong>Name:</strong> {{ selectedStock.name }}</p>
+          <p><strong>Exchange:</strong> {{ selectedStock.exchange }}</p>
+          <p><strong>Price:</strong> ${{ selectedStock.price }}</p>
+        } @else {
+          <label>Name</label>
+          <input type="text" [(ngModel)]="selectedStock.name" />
+          <label>Price</label>
+          <input type="number" [(ngModel)]="selectedStock.price" />
+        }
+      </div>
+
+      <div class="dialog-actions">
+        <button class="btn-cancel" (click)="closeDialog()">Close</button>
+        @if (dialogMode === 'update') {
+          <button class="btn-save" (click)="saveUpdate()">Save Changes</button>
+        }
+      </div>
+    </div>
+  </div>
+}

@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class StockServiceTs {
+export class StockService {
   private initialStocks: Stock[] = [
     new Stock('Test Stock Company', 'TSC', 85, 80, false, 'NASDAQ'),
     new Stock('Second Stock Company', 'SSC', 10, 20, false, 'NSE'),

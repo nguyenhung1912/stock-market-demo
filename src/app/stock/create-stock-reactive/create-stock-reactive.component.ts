@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stock } from '../../model/stock';
 import { ToastrService } from 'ngx-toastr';
+import { StockService } from '../stock.service';
 
 @Component({
   selector: 'app-create-stock-reactive',
@@ -12,9 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreateStockReactiveComponent {
   stockForm!: FormGroup;
+  public exchanges = ['AMEX', 'NASDAQ', 'NYSE'];
   @Output() stockCreated = new EventEmitter<Stock>();
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private stockService: StockService) {
     this.createForm();
   }
 
@@ -50,7 +52,7 @@ export class CreateStockReactiveComponent {
         formValues.exchange,
       );
 
-      this.stockCreated.emit(newStock);
+      this.stockService.createStock(newStock);
       this.toastr.success(`Stock created successfully: ${formValues.code}`);
 
       this.stockForm.reset({ price: 0, exchange: 'NASDAQ' });

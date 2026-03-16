@@ -1,16 +1,11 @@
-<div class="stock-container">
-  <div class="stock-card">
-    <div class="stock-name">{{ stock.name }} ({{ stock.code }})</div>
-    <div class="stock-exchange">{{ stock.exchange }}</div>
-    <div
-      class="stock-price"
-      [class.positive]="stock.isPositiveChange()"
-      [style.color]="stock.isPositiveChange() ? 'green' : 'red'"
-    >
-      $ {{ stock.price }}
-    </div>
-    <button (click)="toggleFavorite($event)">
-      {{ stock.favorite ? 'Remove from Favorite' : 'Add to Favorite' }}
-    </button>
+<div class="list-row">
+  <div class="col bold">{{ stock.code }}</div>
+  <div class="col">{{ stock.name }}</div>
+  <div class="col price">$ {{ stock.price }}</div>
+  <div class="col exchange">{{ stock.exchange }}</div>
+  <div class="col actions">
+    <button class="btn-view" (click)="view.emit(stock)">View</button>
+    <button class="btn-edit" (click)="update.emit(stock)">Update</button>
+    <button class="btn-delete" (click)="delete.emit(stock.code)">Delete</button>
   </div>
 </div>

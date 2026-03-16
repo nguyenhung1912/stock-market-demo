@@ -13,8 +13,4 @@ export class Stock {
         this.favorite = favorite;
         this.exchange = exchange;
     }
-
-    isPositiveChange(): boolean {
-        return this.price >= this.previousPrice;
-    }
 }

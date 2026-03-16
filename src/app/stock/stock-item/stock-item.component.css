@@ -2,48 +2,59 @@
   display: block;
 }
 
-.stock-card {
-  width: 300px;
-  background-color: var(--secondary);
-  border: 2px solid #000000;
-  padding: 10px;
-  text-align: left;
-  border-radius: 4px;
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
 }
 
-.stock-card button {
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 2px solid var(--primary);
+.list-row:hover {
+  background-color: #f9f9f9;
 }
 
-.stock-card button.selected {
-  background-color: #ff5e5b;
-  color: #ffffff;
-  transform: translate(2px, 2px);
+.col {
+  flex: 1;
 }
 
-.stock-card button.selected:hover {
-  background-color: #ff5e5b;
-}
-
-.stock-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.stock-price {
-  font-size: 1.2em;
+.bold {
   font-weight: bold;
-  margin: 10px 0;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .positive {
   color: #28a745;
 }
 
-.negative {
-  color: #dc3545;
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-view {
+  background-color: #17a2b8;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-delete {
+  background-color: #dc3545;
 }
