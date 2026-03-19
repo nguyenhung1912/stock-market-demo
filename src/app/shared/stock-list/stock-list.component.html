@@ -4,7 +4,7 @@
       type="text"
       placeholder="Search by name or code..."
       [(ngModel)]="searchText"
-      (input)="onSearch()"
+      (ngModelChange)="onSearch()"
     />
   </div>
 
@@ -17,7 +17,7 @@
   </div>
 
   <div class="list-body">
-    @for (item of filteredStocks; track item.code) {
+    @for (item of filteredStocks; track item.id) {
       <app-stock-item
         [stock]="item"
         (view)="openViewDialog($event)"

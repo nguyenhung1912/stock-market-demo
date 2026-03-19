@@ -27,7 +27,7 @@ export class StockService {
 
   updateStock(updatedStock: Stock) {
     const current = this.stockSubject.getValue();
-    const index = current.findIndex(s => s.code == updatedStock.code);
+    const index = current.findIndex(s => s.id == updatedStock.id);
     if (index !== -1) {
       current[index]  = updatedStock;
       this.stockSubject.next([...current]);

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stock } from '../../model/stock';
 import { ToastrService } from 'ngx-toastr';
-import { StockService } from '../stock.service';
+import { HttpStockService } from '../http-stock.service';
 
 @Component({
   selector: 'app-create-stock-reactive',
@@ -16,7 +16,7 @@ export class CreateStockReactiveComponent {
   public exchanges = ['AMEX', 'NASDAQ', 'NYSE'];
   @Output() stockCreated = new EventEmitter<Stock>();
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService, private stockService: StockService) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private httpStockService: HttpStockService) {
     this.createForm();
   }
 
@@ -41,21 +41,18 @@ export class CreateStockReactiveComponent {
   }
 
   onCreate() {
-    if (this.stockForm.valid) {
-      const formValues = this.stockForm.value;
-      const newStock = new Stock(
-        formValues.name,
-        formValues.code,
-        formValues.price,
-        0,
-        false,
-        formValues.exchange,
-      );
+    if (this.stockForm.valid)
+    {
+      const value = this.stockForm.value;
+      const newStock = new Stock(value.name, value.code, value.price, 0, false, value.exchange);
 
-      this.stockService.createStock(newStock);
-      this.toastr.success(`Stock created successfully: ${formValues.code}`);
-
-      this.stockForm.reset({ price: 0, exchange: 'NASDAQ' });
+      this.httpStockService.createStock(newStock).subscribe({
+        next: (created) => {
+          this.toastr.success(`Create successful: ${created.code}`);
+          this.stockForm.reset({price: 0, exchange: 'NASDAQ'})
+        },
+        error: () => this.toastr.error('Create stock failed!')
+      });
     } else {
       this.stockForm.markAllAsTouched();
     }

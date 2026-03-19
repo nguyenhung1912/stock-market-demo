@@ -54,17 +54,11 @@
 
     <div class="form-group checkbox-group">
       <input type="checkbox" formControlName="confirm" id="confirmCheck" />
-      <label for="confirmCheck"> I confirm that the information provided above is accurate! </label>
+      <label for="confirmCheck">I confirm that the information provided above is accurate!</label>
     </div>
 
     <div class="btn-group">
-      <button type="submit" class="btn-submit">Submit</button>
       <button type="button" class="btn-create" (click)="onCreate()">Create Stock</button>
     </div>
   </form>
-
-  <div class="debug-info">
-    <p><strong>Form Control value:</strong> {{ stockForm.value | json }}</p>
-    <p><strong>Form Control status:</strong> {{ stockForm.status }}</p>
-  </div>
 </div>
