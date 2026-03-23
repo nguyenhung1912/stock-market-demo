@@ -11,7 +11,8 @@
   <div class="list-header">
     <div class="col">Code</div>
     <div class="col">Name</div>
-    <div class="col">Price</div>
+    <div class="col">Previous Price</div>
+    <div class="col">Current Price</div>
     <div class="col">Exchange</div>
     <div class="col actions-header">Actions</div>
   </div>
@@ -23,6 +24,7 @@
         (view)="openViewDialog($event)"
         (update)="openUpdateDialog($event)"
         (delete)="deleteStock($event)"
+        (toggleFavorite)="onToggleFavorite($event)"
       >
       </app-stock-item>
     }

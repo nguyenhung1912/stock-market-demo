@@ -44,3 +44,8 @@ input::placeholder {
 .mat-typography {
   color: var(--text-light) !important;
 }
+
+.mat-mdc-select-value-text {
+  color: #ffffff !important;
+}
+

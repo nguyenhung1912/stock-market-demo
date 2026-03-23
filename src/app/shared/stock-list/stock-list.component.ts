@@ -6,7 +6,7 @@ import { StockItemComponent } from '../../stock/stock-item/stock-item.component'
 import { FormsModule } from '@angular/forms';
 import { HttpStockService, StockApi } from '../../stock/http-stock.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock-list',
@@ -18,20 +18,29 @@ export class StockListComponent implements OnInit {
   allStocks: Stock[] = [];
   filteredStocks: Stock[] = [];
   searchText: string = '';
-
+  isFavoritePage = false;
   selectedStock: Stock | null = null;
   dialogMode: 'view' | 'update' = 'view';
 
-  constructor(private httpStockService: HttpStockService, private toastr: ToastrService, private cdr: ChangeDetectorRef, private router: Router) { }
+  constructor(
+    private httpStockService: HttpStockService,
+    private toastr: ToastrService,
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-   this.loadStocks();
+    this.route.url.subscribe(url => {
+      this.isFavoritePage = url.length > 0 && url[0].path === 'favorites';
+      this.loadStocks();
+    });
   }
 
-  loadStocks(){
+  loadStocks() {
     this.httpStockService.getStocks().subscribe({
       next: (data: StockApi[]) => {
-        this.allStocks = data.map(s => 
+        this.allStocks = data.map(s =>
           new Stock(s.name, s.code, s.price, s.previousPrice, s.favorite, s.exchange, s.id)
         );
         this.filterData();
@@ -49,11 +58,16 @@ export class StockListComponent implements OnInit {
   }
 
   filterData() {
+    let tempStocks = [...this.allStocks];
+    if (this.isFavoritePage) {
+      tempStocks = tempStocks.filter(s => s.favorite === true || (s.favorite as any) === 'true');
+    }
+
     if (!this.searchText) {
-      this.filteredStocks = [...this.allStocks];
+      this.filteredStocks = tempStocks;
     } else {
       const lowerText = this.searchText.toLowerCase();
-      this.filteredStocks = this.allStocks.filter(s =>
+      this.filteredStocks = tempStocks.filter(s =>
         s.name.toLowerCase().includes(lowerText) ||
         s.code.toLowerCase().includes(lowerText)
       );
@@ -61,7 +75,7 @@ export class StockListComponent implements OnInit {
   }
 
   openViewDialog(stock: Stock) {
-    if (stock.id){
+    if (stock.id) {
       this.router.navigate(['/stock', stock.id]);
     }
   }
@@ -92,6 +106,12 @@ export class StockListComponent implements OnInit {
 
   saveUpdate() {
     if (this.selectedStock && this.selectedStock.id !== undefined) {
+      const oldStockData = this.allStocks.find(s => s.id === this.selectedStock!.id);
+
+      if (oldStockData) {
+        this.selectedStock.previousPrice = oldStockData.price;
+      }
+      
       this.httpStockService.updateStock(this.selectedStock.id, this.selectedStock).subscribe({
         next: () => {
           this.toastr.success('Update successful');
@@ -101,5 +121,19 @@ export class StockListComponent implements OnInit {
         error: () => this.toastr.error('Update failed!')
       });
     }
+  }
+
+  onToggleFavorite(stock: Stock) {
+    if (!stock.id) return;
+
+    const newFavStatus = !(stock.favorite === true || (stock.favorite as any) === 'true');
+
+    this.httpStockService.patchStock(stock.id, { favorite: newFavStatus }).subscribe({
+      next: () => {
+        this.toastr.success(newFavStatus ? 'Added to Favorites' : 'Removed from Favorites');
+        this.loadStocks();
+      },
+      error: () => this.toastr.error('Failed to update favorite status!')
+    });
   }
 }

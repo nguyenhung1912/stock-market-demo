@@ -50,4 +50,8 @@ export class HttpStockService {
     deleteStock(id: string ): Observable<void>{
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
+
+    getExchanges(): Observable<any[]>{
+        return this.http.get<any[]>('http://localhost:3000/exchanges');
+    }
 }

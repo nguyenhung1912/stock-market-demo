@@ -6,33 +6,12 @@ import { StockDetailsComponent } from './stock/stock-details/stock-details.compo
 import { StockListComponent } from './shared/stock-list/stock-list.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/stocks',
-    pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'stocks',
-    component: StockListComponent,
-  },
-  {
-    path: 'stocks/create',
-    component: CreateStockReactiveComponent,
-  },
-  {
-    path: 'stock/:id',
-    component: StockDetailsComponent,
-  },
-  {
-    path: '**',
-    redirectTo: '/stocks'
-  }
+  { path: '', redirectTo: '/stocks', pathMatch: 'full', },
+  { path: 'login', component: LoginComponent, },
+  { path: 'register', component: RegisterComponent, },
+  { path: 'stocks', component: StockListComponent, },
+  { path: 'favorites', component: StockListComponent },
+  { path: 'stocks/create', component: CreateStockReactiveComponent, },
+  { path: 'stock/:id', component: StockDetailsComponent, },
+  { path: '**', redirectTo: '/stocks' }
 ];  

@@ -5,7 +5,7 @@
       "code": "SSC",
       "price": 21,
       "previousPrice": "20",
-      "favorite": "false",
+      "favorite": false,
       "exchange": "NSE",
       "id": "2"
     },
@@ -16,7 +16,34 @@
       "price": "876",
       "previousPrice": "765",
       "exchange": "NYSE",
-      "favorite": "false"
+      "favorite": false
+    },
+    {
+      "name": "Apple INC",
+      "code": "AAPL",
+      "price": 200,
+      "previousPrice": 0,
+      "favorite": false,
+      "exchange": "NASDAQ",
+      "id": "379a"
+    },
+    {
+      "name": "Microsoft Corporation",
+      "code": "MSFT",
+      "price": 410,
+      "previousPrice": 420.9,
+      "favorite": true,
+      "exchange": "AMEX",
+      "id": "5a8f"
+    },
+    {
+      "id": "24c0",
+      "name": "Tesla, Inc.",
+      "code": "TSLA",
+      "price": 172.8,
+      "previousPrice": 172.8,
+      "favorite": false,
+      "exchange": "AMEX"
     }
   ],
   "users": [
@@ -24,6 +51,133 @@
       "id": "1",
       "username": "admin",
       "password": "123"
+    },
+    {
+      "id": "3c16",
+      "username": "admin1",
+      "password": "123"
+    }
+  ],
+  "exchanges": [
+    {
+      "id": "nasdaq",
+      "code": "NASDAQ",
+      "name": "NASDAQ Stock Market",
+      "country": "USA",
+      "timezone": "EST",
+      "currency": "USD"
+    },
+    {
+      "id": "nyse",
+      "code": "NYSE",
+      "name": "New York Stock Exchange",
+      "country": "USA",
+      "timezone": "EST",
+      "currency": "USD"
+    },
+    {
+      "id": "amex",
+      "code": "AMEX",
+      "name": "American Stock Exchange",
+      "country": "USA",
+      "timezone": "EST",
+      "currency": "USD"
+    },
+    {
+      "id": "hose",
+      "code": "HOSE",
+      "name": "Ho Chi Minh Stock Exchange",
+      "country": "Vietnam",
+      "timezone": "ICT",
+      "currency": "VND"
+    },
+    {
+      "id": "hnx",
+      "code": "HNX",
+      "name": "Hanoi Stock Exchange",
+      "country": "Vietnam",
+      "timezone": "ICT",
+      "currency": "VND"
+    },
+    {
+      "id": "lse",
+      "code": "LSE",
+      "name": "London Stock Exchange",
+      "country": "UK",
+      "timezone": "GMT",
+      "currency": "GBP"
+    },
+    {
+      "id": "tse",
+      "code": "TSE",
+      "name": "Tokyo Stock Exchange",
+      "country": "Japan",
+      "timezone": "JST",
+      "currency": "JPY"
+    },
+    {
+      "id": "sse",
+      "code": "SSE",
+      "name": "Shanghai Stock Exchange",
+      "country": "China",
+      "timezone": "CST",
+      "currency": "CNY"
+    },
+    {
+      "id": "hkex",
+      "code": "HKEX",
+      "name": "Hong Kong Exchange",
+      "country": "Hong Kong",
+      "timezone": "HKT",
+      "currency": "HKD"
+    },
+    {
+      "id": "euronext",
+      "code": "EURONEXT",
+      "name": "Euronext",
+      "country": "EU",
+      "timezone": "CET",
+      "currency": "EUR"
+    },
+    {
+      "id": "tsx",
+      "code": "TSX",
+      "name": "Toronto Stock Exchange",
+      "country": "Canada",
+      "timezone": "EST",
+      "currency": "CAD"
+    },
+    {
+      "id": "asx",
+      "code": "ASX",
+      "name": "Australian Securities Exchange",
+      "country": "Australia",
+      "timezone": "AEST",
+      "currency": "AUD"
+    },
+    {
+      "id": "bse",
+      "code": "BSE",
+      "name": "Bombay Stock Exchange",
+      "country": "India",
+      "timezone": "IST",
+      "currency": "INR"
+    },
+    {
+      "id": "nse",
+      "code": "NSE",
+      "name": "National Stock Exchange of India",
+      "country": "India",
+      "timezone": "IST",
+      "currency": "INR"
+    },
+    {
+      "id": "krx",
+      "code": "KRX",
+      "name": "Korea Exchange",
+      "country": "South Korea",
+      "timezone": "KST",
+      "currency": "KRW"
     }
   ],
   "profile": {

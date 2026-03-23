@@ -1,9 +1,39 @@
 <div class="list-row">
-  <div class="col bold">{{ stock.code | uppercase }}</div>
-  <div class="col">{{ stock.name }}</div>
-  <div class="col price">{{ stock.price | currency: 'USD' }}</div>
-  <div class="col exchange">{{ stock.exchange }}</div>
+  <div class="bold">{{ stock.code | uppercase }}</div>
+  <div>{{ stock.name }}</div>
+
+  <div style="color: #888">{{ stock.previousPrice | currency: 'USD' }}</div>
+
+  <div
+    class="price"
+    [ngClass]="{
+      'text-green': stock.price > stock.previousPrice,
+      'text-red': stock.price < stock.previousPrice,
+      'text-gray': stock.price === stock.previousPrice,
+    }"
+  >
+    {{ stock.price | currency: 'USD' }}
+    @if (stock.price > stock.previousPrice) {
+      <mat-icon style="font-size: 16px; width: 16px; height: 16px">arrow_upward</mat-icon>
+    }
+    @if (stock.price < stock.previousPrice) {
+      <mat-icon style="font-size: 16px; width: 16px; height: 16px">arrow_downward</mat-icon>
+    }
+  </div>
+
+  <div class="exchange">{{ stock.exchange }}</div>
+
   <div class="actions">
+    <button
+      mat-icon-button
+      (click)="toggleFavorite.emit(stock)"
+      [title]="stock.favorite ? 'Remove Favorite' : 'Add to Favorite'"
+    >
+      <mat-icon [style.color]="stock.favorite === true || stock.favorite ? '#ff5252' : '#555'"
+        >favorite</mat-icon
+      >
+    </button>
+
     <button mat-icon-button style="color: #2196f3" (click)="view.emit(stock)" title="View">
       <mat-icon>visibility</mat-icon>
     </button>

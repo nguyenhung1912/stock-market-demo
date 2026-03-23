@@ -4,7 +4,7 @@
 
 .list-row {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr 140px;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 180px;
   align-items: center;
   padding: 10px 15px;
   border-bottom: 1px solid #333;
@@ -28,6 +28,18 @@
   font-weight: bold;
   font-size: 1.1rem;
   color: #44d265;
+}
+
+.text-green {
+  color: #44d265 !important;
+}
+
+.text-red {
+  color: #ff5252 !important;
+}
+
+.text-gray {
+  color: #aaa !important;
 }
 
 .actions {

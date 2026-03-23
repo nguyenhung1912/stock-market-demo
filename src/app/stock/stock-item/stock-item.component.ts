@@ -15,4 +15,5 @@ export class StockItemComponent {
   @Output() view = new EventEmitter<Stock>();
   @Output() update = new EventEmitter<Stock>();
   @Output() delete = new EventEmitter<string>();
+  @Output() toggleFavorite = new EventEmitter<Stock>();
 }
