@@ -6,6 +6,7 @@ import { StockItemComponent } from '../../stock/stock-item/stock-item.component'
 import { FormsModule } from '@angular/forms';
 import { HttpStockService, StockApi } from '../../stock/http-stock.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock-list',
@@ -21,7 +22,7 @@ export class StockListComponent implements OnInit {
   selectedStock: Stock | null = null;
   dialogMode: 'view' | 'update' = 'view';
 
-  constructor(private httpStockService: HttpStockService, private toastr: ToastrService, private cdr: ChangeDetectorRef) { }
+  constructor(private httpStockService: HttpStockService, private toastr: ToastrService, private cdr: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
    this.loadStocks();
@@ -60,8 +61,9 @@ export class StockListComponent implements OnInit {
   }
 
   openViewDialog(stock: Stock) {
-    this.selectedStock = stock;
-    this.dialogMode = 'view';
+    if (stock.id){
+      this.router.navigate(['/stock', stock.id]);
+    }
   }
 
   openUpdateDialog(stock: Stock) {

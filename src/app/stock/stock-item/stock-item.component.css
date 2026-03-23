@@ -3,16 +3,16 @@
 }
 
 .list-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 140px;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 15px;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
+  padding: 10px 15px;
+  border-bottom: 1px solid #333;
+  color: #e0e0e0;
 }
 
 .list-row:hover {
-  background-color: #f9f9f9;
+  background-color: #1e1e1e;
 }
 
 .col {
@@ -21,40 +21,17 @@
 
 .bold {
   font-weight: bold;
+  color: #ffffff;
 }
 
 .price {
   font-weight: bold;
   font-size: 1.1rem;
-}
-
-.positive {
-  color: #28a745;
+  color: #44d265;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-
-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: white;
-}
-
-.btn-view {
-  background-color: #17a2b8;
-}
-
-.btn-edit {
-  background-color: #ffc107;
-  color: black;
-}
-
-.btn-delete {
-  background-color: #dc3545;
+  gap: 4px;
+  justify-content: center;
 }

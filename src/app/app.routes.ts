@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/components/login/login.component';
-import { StockItemComponent } from './stock/stock-item/stock-item.component';
-import { CreateStock } from './stock/create-stock/create-stock.component';
-import { HomeComponent } from './home/home.component';
 import { CreateStockReactiveComponent } from './stock/create-stock-reactive/create-stock-reactive.component';
+import { RegisterComponent } from './features/auth/components/register/register.component';
+import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
+import { StockListComponent } from './shared/stock-list/stock-list.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/stocks',
     pathMatch: 'full',
   },
   {
@@ -16,19 +16,23 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'register',
+    component: RegisterComponent,
   },
   {
-    path: 'stock',
-    component: StockItemComponent,
+    path: 'stocks',
+    component: StockListComponent,
   },
   {
-    path: 'create-stock',
-    component: CreateStock,
-  },
-  {
-    path: 'create-stock-reactive',
+    path: 'stocks/create',
     component: CreateStockReactiveComponent,
   },
-];
+  {
+    path: 'stock/:id',
+    component: StockDetailsComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/stocks'
+  }
+];  

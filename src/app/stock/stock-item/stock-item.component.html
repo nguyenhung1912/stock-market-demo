@@ -1,11 +1,17 @@
 <div class="list-row">
-  <div class="col bold">{{ stock.code }}</div>
+  <div class="col bold">{{ stock.code | uppercase }}</div>
   <div class="col">{{ stock.name }}</div>
-  <div class="col price">$ {{ stock.price }}</div>
+  <div class="col price">{{ stock.price | currency: 'USD' }}</div>
   <div class="col exchange">{{ stock.exchange }}</div>
-  <div class="col actions">
-    <button class="btn-view" (click)="view.emit(stock)">View</button>
-    <button class="btn-edit" (click)="update.emit(stock)">Update</button>
-    <button class="btn-delete" (click)="delete.emit(stock.code)">Delete</button>
+  <div class="actions">
+    <button mat-icon-button style="color: #2196f3" (click)="view.emit(stock)" title="View">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button style="color: #ffc107" (click)="update.emit(stock)" title="Update">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button style="color: #f44336" (click)="delete.emit(stock.code)" title="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
 </div>

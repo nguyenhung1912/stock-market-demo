@@ -1,0 +1,25 @@
+@if (stock) {
+  <mat-card style="width: 100%; max-width: 500px; padding: 20px">
+    <mat-card-header>
+      <mat-card-title>{{ stock.name }} ({{ stock.code | uppercase }})</mat-card-title>
+      <mat-card-subtitle>{{ stock.exchange }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content style="margin-top: 25px">
+      <p>
+        <strong>Current Price:</strong>
+        <span style="color: #44d265; font-weight: bold">{{ stock.price | currency: 'USD' }}</span>
+      </p>
+      <p><strong>Previous Price:</strong> {{ stock.previousPrice | currency: 'USD' }}</p>
+      <p><strong>Favorite:</strong> {{ stock.favorite ? 'Yes' : 'No' }}</p>
+    </mat-card-content>
+
+    <mat-card-actions align="end" style="margin-top: 15px">
+      <button mat-raised-button color="primary" (click)="goBack()">Back to List</button>
+    </mat-card-actions>
+  </mat-card>
+} @else {
+  <div style="text-align: center; color: #888">
+    <h3>Loading data...</h3>
+  </div>
+}

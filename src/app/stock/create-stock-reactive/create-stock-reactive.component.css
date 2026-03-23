@@ -1,89 +1,71 @@
 .form-container {
   padding: 20px;
   border-radius: 5px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.form-container h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
 }
 
 .form-group {
-  margin-bottom: 15px;
-}
-
-.form-group input[type='text'],
-.form-group input[type='number'] {
-  width: 300px;
-  border: 1px solid #000;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+  font-weight: 500;
 }
 
 .form-control {
   width: 100%;
-  padding: 8px;
+  max-width: 400px;
+  padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 4px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #44d265;
 }
 
 .form-control.invalid {
-  border-color: red;
-  background-color: #fff0f0;
+  border-color: #ff5252;
+  background-color: rgba(255, 82, 82, 0.1);
 }
 
 .error-msg {
-  color: red;
+  color: #ff5252;
   font-size: 0.85rem;
   margin-top: 5px;
 }
 
-.debug-info {
-  margin-top: 20px;
-  padding: 10px;
-}
-
 .btn-group {
   margin-top: 20px;
-  display: flex;
-  gap: 10px;
-}
-
-button {
-  padding: 10px 15px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  color: white;
-}
-
-.btn-submit {
-  background-color: #a4a2a2;
 }
 
 .btn-create {
   background-color: #44d265;
-}
-
-.stock-item {
-  padding: 5px;
-  border-bottom: 1px solid #eee;
-}
-
-.stock-list {
-  margin-top: 15px;
-}
-
-.success-message {
-  margin-bottom: 15px;
-  font-size: 1rem;
   color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.checkbox-group {
-  display: flex;
-  align-items: center;
+.btn-create:hover {
+  background-color: #3bc057;
 }
 
 .checkbox-group label {
-  margin-left: 5px;
+  color: #e0e0e0;
 }

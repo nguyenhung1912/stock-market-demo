@@ -32,27 +32,18 @@
 @if (selectedStock) {
   <div class="dialog-overlay">
     <div class="dialog-box">
-      <h2>{{ dialogMode === 'view' ? 'Stock Details' : 'Update Stock' }}</h2>
+      <h2>Update Stock</h2>
 
       <div class="dialog-content">
-        @if (dialogMode === 'view') {
-          <p><strong>Code:</strong> {{ selectedStock.code }}</p>
-          <p><strong>Name:</strong> {{ selectedStock.name }}</p>
-          <p><strong>Exchange:</strong> {{ selectedStock.exchange }}</p>
-          <p><strong>Price:</strong> ${{ selectedStock.price }}</p>
-        } @else {
-          <label>Name</label>
-          <input type="text" [(ngModel)]="selectedStock.name" />
-          <label>Price</label>
-          <input type="number" [(ngModel)]="selectedStock.price" />
-        }
+        <label>Name</label>
+        <input type="text" [(ngModel)]="selectedStock.name" />
+        <label>Price</label>
+        <input type="number" [(ngModel)]="selectedStock.price" />
       </div>
 
       <div class="dialog-actions">
         <button class="btn-cancel" (click)="closeDialog()">Close</button>
-        @if (dialogMode === 'update') {
-          <button class="btn-save" (click)="saveUpdate()">Save Changes</button>
-        }
+        <button class="btn-save" (click)="saveUpdate()">Save Changes</button>
       </div>
     </div>
   </div>
