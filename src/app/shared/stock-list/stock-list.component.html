@@ -21,7 +21,7 @@
     @for (item of filteredStocks; track item.id) {
       <app-stock-item
         [stock]="item"
-        (view)="openViewDialog($event)"
+        (view)="viewStockDetail($event)"
         (update)="openUpdateDialog($event)"
         (delete)="deleteStock($event)"
         (toggleFavorite)="onToggleFavorite($event)"

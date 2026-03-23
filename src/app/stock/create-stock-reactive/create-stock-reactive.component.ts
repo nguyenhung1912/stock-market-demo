@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stock } from '../../model/stock';
@@ -16,7 +16,6 @@ import { MatSelectModule } from '@angular/material/select';
 export class CreateStockReactiveComponent implements OnInit {
   stockForm!: FormGroup;
   public exchanges: any[] = [];
-  @Output() stockCreated = new EventEmitter<Stock>();
 
   constructor(private fb: FormBuilder, private toastr: ToastrService, private httpStockService: HttpStockService) {
     this.createForm();
@@ -40,16 +39,6 @@ export class CreateStockReactiveComponent implements OnInit {
       exchange: ['NASDAQ', Validators.required],
       confirm: [false, Validators.requiredTrue]
     });
-  }
-
-  onSubmit() {
-    console.log('Form Value:', this.stockForm.value);
-    console.log('Form Status:', this.stockForm.status);
-    if (this.stockForm.invalid) {
-      alert('Form is invalid');
-    } else {
-      alert('Form submitted successfully!');
-    }
   }
 
   onCreate() {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpStockService, StockApi } from '../http-stock.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,6 @@ export class StockDetailsComponent implements OnInit {
     private router: Router, 
     private httpStockService: HttpStockService, 
     private toastr: ToastrService, 
-    private cdr: ChangeDetectorRef
   ){}
   
  ngOnInit(): void {
@@ -31,7 +30,6 @@ export class StockDetailsComponent implements OnInit {
         this.httpStockService.getStockById(stockId).subscribe({
           next: (data) => {
             this.stock = data;
-            this.cdr.detectChanges();
           },
           error: (err) => {
             console.error(err);

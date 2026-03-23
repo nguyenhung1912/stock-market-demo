@@ -1,33 +1,6 @@
 {
   "stocks": [
     {
-      "name": "Second Stock Company",
-      "code": "SSC",
-      "price": 21,
-      "previousPrice": "20",
-      "favorite": false,
-      "exchange": "NSE",
-      "id": "2"
-    },
-    {
-      "id": "4",
-      "name": "Fourth Stock Company",
-      "code": "LSC",
-      "price": "876",
-      "previousPrice": "765",
-      "exchange": "NYSE",
-      "favorite": false
-    },
-    {
-      "name": "Apple INC",
-      "code": "AAPL",
-      "price": 200,
-      "previousPrice": 0,
-      "favorite": false,
-      "exchange": "NASDAQ",
-      "id": "379a"
-    },
-    {
       "name": "Microsoft Corporation",
       "code": "MSFT",
       "price": 410,
@@ -44,6 +17,78 @@
       "previousPrice": 172.8,
       "favorite": false,
       "exchange": "AMEX"
+    },
+    {
+      "id": "9e23",
+      "name": "NVIDIA Corporation",
+      "code": "NVIDIA",
+      "price": 890.15,
+      "previousPrice": 890.15,
+      "favorite": false,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "bd52",
+      "name": "Amazon.com, Inc.",
+      "code": "AMZN",
+      "price": 178.25,
+      "previousPrice": 178.25,
+      "favorite": false,
+      "exchange": "LSE"
+    },
+    {
+      "id": "5c42",
+      "name": "Apple Inc.'",
+      "code": "AAPL",
+      "price": 189.45,
+      "previousPrice": 189.45,
+      "favorite": false,
+      "exchange": "KRX"
+    },
+    {
+      "id": "6a40",
+      "name": "Netflix, Inc.",
+      "code": "NFLX",
+      "price": 620.5,
+      "previousPrice": 620.5,
+      "favorite": false,
+      "exchange": "HNX"
+    },
+    {
+      "id": "242f",
+      "name": "Meta Platforms, Inc.",
+      "code": "META",
+      "price": 510.66,
+      "previousPrice": 510.66,
+      "favorite": false,
+      "exchange": "HKEX"
+    },
+    {
+      "id": "d550",
+      "name": "Alphabet Inc. Class A",
+      "code": "GOOGL",
+      "price": 140.22,
+      "previousPrice": 140.22,
+      "favorite": false,
+      "exchange": "LSE"
+    },
+    {
+      "id": "5ecc",
+      "name": "Vietcombank",
+      "code": "VCB",
+      "price": 90000,
+      "previousPrice": 90000,
+      "favorite": false,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "01ee",
+      "name": "Vingroup Joint Stock Company",
+      "code": "VIC",
+      "price": 45000,
+      "previousPrice": 45000,
+      "favorite": true,
+      "exchange": "HOSE"
     }
   ],
   "users": [

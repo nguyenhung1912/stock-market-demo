@@ -20,7 +20,6 @@ export class StockListComponent implements OnInit {
   searchText: string = '';
   isFavoritePage = false;
   selectedStock: Stock | null = null;
-  dialogMode: 'view' | 'update' = 'view';
 
   constructor(
     private httpStockService: HttpStockService,
@@ -74,7 +73,7 @@ export class StockListComponent implements OnInit {
     }
   }
 
-  openViewDialog(stock: Stock) {
+  viewStockDetail(stock: Stock) {
     if (stock.id) {
       this.router.navigate(['/stock', stock.id]);
     }
@@ -82,7 +81,6 @@ export class StockListComponent implements OnInit {
 
   openUpdateDialog(stock: Stock) {
     this.selectedStock = { ...stock } as Stock;
-    this.dialogMode = 'update';
   }
 
   deleteStock(code: string) {
@@ -111,7 +109,7 @@ export class StockListComponent implements OnInit {
       if (oldStockData) {
         this.selectedStock.previousPrice = oldStockData.price;
       }
-      
+
       this.httpStockService.updateStock(this.selectedStock.id, this.selectedStock).subscribe({
         next: () => {
           this.toastr.success('Update successful');
