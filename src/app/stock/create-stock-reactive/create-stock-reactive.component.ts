@@ -17,7 +17,11 @@ export class CreateStockReactiveComponent implements OnInit {
   stockForm!: FormGroup;
   public exchanges: any[] = [];
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService, private httpStockService: HttpStockService) {
+  constructor(
+    private fb: FormBuilder, 
+    private toastr: ToastrService, 
+    private httpStockService: HttpStockService
+  ){
     this.createForm();
   }
 
