@@ -3,20 +3,20 @@
     {
       "name": "Microsoft Corporation",
       "code": "MSFT",
-      "price": 410,
-      "previousPrice": 420.9,
+      "price": 411,
+      "previousPrice": 410,
       "favorite": true,
       "exchange": "AMEX",
       "id": "5a8f"
     },
     {
-      "id": "24c0",
       "name": "Tesla, Inc.",
       "code": "TSLA",
-      "price": 172.8,
+      "price": 172.9,
       "previousPrice": 172.8,
-      "favorite": false,
-      "exchange": "AMEX"
+      "favorite": true,
+      "exchange": "AMEX",
+      "id": "24c0"
     },
     {
       "id": "9e23",
@@ -87,20 +87,17 @@
       "code": "VIC",
       "price": 45000,
       "previousPrice": 45000,
-      "favorite": true,
+      "favorite": false,
       "exchange": "HOSE"
-    }
-  ],
-  "users": [
-    {
-      "id": "1",
-      "username": "admin",
-      "password": "123"
     },
     {
-      "id": "3c16",
-      "username": "admin1",
-      "password": "123"
+      "id": "2003",
+      "name": "abc",
+      "code": "ac",
+      "price": 100,
+      "previousPrice": 100,
+      "favorite": false,
+      "exchange": "BSE"
     }
   ],
   "exchanges": [
@@ -225,8 +222,27 @@
       "currency": "KRW"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123"
+    },
+    {
+      "id": "3c16",
+      "username": "admin1",
+      "password": "123"
+    },
+    {
+      "id": "d8f0",
+      "username": "admin11",
+      "password": "123"
+    },
+    {
+      "id": "192b",
+      "username": "user1",
+      "password": "123"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
