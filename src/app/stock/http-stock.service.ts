@@ -3,6 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Stock } from '../model/stock';
 
+export interface Exchange {
+    id: string;
+    code: string;
+    name?: string;
+    country: string;
+    timezone: string;
+    currency: string;
+}
+
 export interface StockApi {
     id?: string;
     name: string;
@@ -18,6 +27,7 @@ export interface StockApi {
 })
 export class HttpStockService {
     private apiUrl = 'http://localhost:3000/stocks';
+    private exchangeApiUrl = 'http://localhost:3000/exchanges';
 
     constructor(private http: HttpClient) {}
 
@@ -51,7 +61,7 @@ export class HttpStockService {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
 
-    getExchanges(): Observable<any[]>{
-        return this.http.get<any[]>('http://localhost:3000/exchanges');
+    getExchanges(): Observable<Exchange[]>{
+        return this.http.get<Exchange[]>(this.exchangeApiUrl);
     }
 }
