@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpStockService, StockApi } from '../http-stock.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-stock-details.component',
+  selector: 'app-stock-details',
   imports: [CommonModule, RouterModule, MatCardModule, MatButtonModule],
   templateUrl: './stock-details.component.html',
   styleUrl: './stock-details.component.css',
@@ -20,6 +20,7 @@ export class StockDetailsComponent implements OnInit {
     private router: Router, 
     private httpStockService: HttpStockService, 
     private toastr: ToastrService, 
+    private cdr: ChangeDetectorRef
   ){}
   
  ngOnInit(): void {
@@ -30,6 +31,7 @@ export class StockDetailsComponent implements OnInit {
         this.httpStockService.getStockById(stockId).subscribe({
           next: (data) => {
             this.stock = data;
+            this.cdr.detectChanges();
           },
           error: (err) => {
             console.error(err);
