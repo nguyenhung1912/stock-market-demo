@@ -1,4 +1,4 @@
-@if (stock) {
+@if (stock$ | async; as stock) {
   <mat-card style="width: 100%; max-width: 500px; padding: 20px">
     <mat-card-header>
       <mat-card-title>{{ stock.name }} ({{ stock.code | uppercase }})</mat-card-title>

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stock } from '../../model/stock';
 import { ToastrService } from 'ngx-toastr';
-import { HttpStockService } from '../http-stock.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { StockService } from '../../core/services/stock.service';
 
 @Component({
   selector: 'app-create-stock-reactive',
@@ -20,13 +20,13 @@ export class CreateStockReactiveComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private toastr: ToastrService, 
-    private httpStockService: HttpStockService
+    private stockService: StockService
   ){
     this.createForm();
   }
 
   ngOnInit(){
-    this.httpStockService.getExchanges().subscribe({
+    this.stockService.getExchanges().subscribe({
       next: (data) => {
         this.exchanges = data;
         if (data.length > 0) this.stockForm.patchValue({exchange: data[0].code});
@@ -51,7 +51,7 @@ export class CreateStockReactiveComponent implements OnInit {
       const value = this.stockForm.value;
       const newStock = new Stock(value.name, value.code, value.price, value.price, false, value.exchange);
 
-      this.httpStockService.createStock(newStock).subscribe({
+      this.stockService.create(newStock).subscribe({
         next: (created) => {
           this.toastr.success(`Create successful: ${created.code}`);
           this.stockForm.reset({price: 0, exchange: 'NASDAQ'})

@@ -1,10 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { HttpStockService, StockApi } from '../http-stock.service';
+import { Stock } from './../../model/stock';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { StockApi } from '../../model/stock-api.model';
+import { StockService } from '../../core/services/stock.service';
+import { catchError, EMPTY, Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-stock-details',
@@ -13,37 +16,35 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './stock-details.component.css',
 })
 export class StockDetailsComponent implements OnInit {
-  stock!: StockApi;
+  stock$!: Observable<StockApi>;
 
   constructor(
-    private route: ActivatedRoute, 
-    private router: Router, 
-    private httpStockService: HttpStockService, 
-    private toastr: ToastrService, 
-    private cdr: ChangeDetectorRef
-  ){}
-  
- ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const stockId = params.get('id');
+    private route: ActivatedRoute,
+    private router: Router,
+    private stockService: StockService,
+    private toastr: ToastrService,
+  ) {}
 
-      if (stockId) {
-        this.httpStockService.getStockById(stockId).subscribe({
-          next: (data) => {
-            this.stock = data;
-            this.cdr.detectChanges();
-          },
-          error: (err) => {
-            console.error(err);
-            this.toastr.error('Failed to load stock details');
-            this.router.navigate(['/stocks']);
-          }
-        });
-      }
-    });
+  ngOnInit(): void {
+    this.stock$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        const id = params.get('id');
+        if (!id) {
+          this.router.navigate(['/stocks']);
+          return EMPTY;
+        }
+        return this.stockService.getStockById(id);
+      }),
+      catchError((err) => {
+        console.error(err);
+        this.toastr.error('Failed to load stock details');
+        this.router.navigate(['/stocks']);
+        return EMPTY;
+      }),
+    );
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['/stocks']);
   }
 }

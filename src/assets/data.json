@@ -12,20 +12,20 @@
     {
       "name": "Tesla, Inc.",
       "code": "TSLA",
-      "price": 172.9,
-      "previousPrice": 172.8,
+      "price": 180,
+      "previousPrice": 172.9,
       "favorite": true,
       "exchange": "AMEX",
       "id": "24c0"
     },
     {
-      "id": "9e23",
       "name": "NVIDIA Corporation",
       "code": "NVIDIA",
-      "price": 890.15,
+      "price": 890.1,
       "previousPrice": 890.15,
-      "favorite": false,
-      "exchange": "HOSE"
+      "favorite": true,
+      "exchange": "HOSE",
+      "id": "9e23"
     },
     {
       "id": "bd52",
@@ -33,17 +33,17 @@
       "code": "AMZN",
       "price": 178.25,
       "previousPrice": 178.25,
-      "favorite": false,
+      "favorite": true,
       "exchange": "LSE"
     },
     {
-      "id": "5c42",
       "name": "Apple Inc.'",
       "code": "AAPL",
-      "price": 189.45,
+      "price": 140,
       "previousPrice": 189.45,
       "favorite": false,
-      "exchange": "KRX"
+      "exchange": "KRX",
+      "id": "5c42"
     },
     {
       "id": "6a40",
@@ -91,13 +91,13 @@
       "exchange": "HOSE"
     },
     {
-      "id": "2003",
-      "name": "abc",
-      "code": "ac",
-      "price": 100,
-      "previousPrice": 100,
-      "favorite": false,
-      "exchange": "BSE"
+      "id": "4d2d",
+      "name": "Vingroup JSC",
+      "code": "VIC",
+      "price": 51.2,
+      "previousPrice": 51.2,
+      "favorite": true,
+      "exchange": "HOSE"
     }
   ],
   "exchanges": [
@@ -242,6 +242,11 @@
       "id": "192b",
       "username": "user1",
       "password": "123"
+    },
+    {
+      "id": "0763",
+      "username": "abc1",
+      "password": "abc2"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { UserService, User } from '../../../../core/services/user.service';
+import { UserService } from '../../../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../../../../model/user.model';
 
 @Component({
   selector: 'app-register',

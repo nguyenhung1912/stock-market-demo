@@ -28,6 +28,7 @@ export class LoginComponent {
         const user = users.find(u => u.username === this.username && u.password === this.password);
         if (user) {
           this.toastr.success('Login successful!');
+          localStorage.setItem('loggedInUser', JSON.stringify(user));
           this.router.navigate(['/stocks']); 
         } else {
           this.toastr.error('Invalid username or password!');

@@ -4,9 +4,10 @@ import { ChangeDetectorRef, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { StockItemComponent } from '../../stock/stock-item/stock-item.component';
 import { FormsModule } from '@angular/forms';
-import { HttpStockService, StockApi } from '../../stock/http-stock.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StockApi } from '../../model/stock-api.model';
+import { StockService } from '../../core/services/stock.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -22,7 +23,7 @@ export class StockListComponent implements OnInit {
   selectedStock: Stock | null = null;
 
   constructor(
-    private httpStockService: HttpStockService,
+    private stockService: StockService,
     private toastr: ToastrService,
     private cdr: ChangeDetectorRef,
     private router: Router,
@@ -37,7 +38,7 @@ export class StockListComponent implements OnInit {
   }
 
   loadStocks() {
-    this.httpStockService.getStocks().subscribe({
+    this.stockService.getStocks().subscribe({
       next: (data: StockApi[]) => {
         this.allStocks = data.map(s =>
           new Stock(s.name, s.code, s.price, s.previousPrice, s.favorite, s.exchange, s.id)
@@ -88,7 +89,7 @@ export class StockListComponent implements OnInit {
     if (!stock || stock.id == undefined) return;
 
     if (confirm(`Are you sure you want to delete ${code}?`)) {
-      this.httpStockService.deleteStock(stock.id).subscribe({
+      this.stockService.delete(stock.id).subscribe({
         next: () => {
           this.toastr.success(`Deleted ${code}`);
           this.loadStocks();
@@ -110,7 +111,7 @@ export class StockListComponent implements OnInit {
         this.selectedStock.previousPrice = oldStockData.price;
       }
 
-      this.httpStockService.updateStock(this.selectedStock.id, this.selectedStock).subscribe({
+      this.stockService.update(this.selectedStock.id, this.selectedStock).subscribe({
         next: () => {
           this.toastr.success('Update successful');
           this.closeDialog();
@@ -126,7 +127,7 @@ export class StockListComponent implements OnInit {
 
     const newFavStatus = !(stock.favorite === true || (stock.favorite as any) === 'true');
 
-    this.httpStockService.patchStock(stock.id, { favorite: newFavStatus }).subscribe({
+    this.stockService.patch(stock.id, { favorite: newFavStatus }).subscribe({
       next: () => {
         this.toastr.success(newFavStatus ? 'Added to Favorites' : 'Removed from Favorites');
         this.loadStocks();
