@@ -1,59 +1,64 @@
-# StockMarket
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+# Stock Market — Angular Demo
 
-## Development server
+Ứng dụng mẫu quản lý cổ phiếu viết bằng Angular.
 
-To start a local development server, run:
+## Mô tả
 
-```bash
-ng serve
-```
+Project này là một ví dụ nhỏ cho việc quản lý danh sách cổ phiếu, bao gồm: tạo cổ phiếu, xem chi tiết, và danh sách cổ phiếu. Mục tiêu là minh họa kiến trúc Angular với các feature, service, repository và mô hình dữ liệu rõ ràng.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Yêu cầu
 
-## Code scaffolding
+- Node.js >= 14
+- npm (hoặc yarn)
+- Angular CLI (tùy chọn để chạy lệnh phát triển)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Cài đặt & chạy
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Cài đặt phụ thuộc:
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+2. Chạy ứng dụng ở môi trường phát triển:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Ứng dụng mặc định sẽ chạy tại `http://localhost:4200` (nếu cấu hình `package.json` dùng port mặc định của Angular).
 
-## Running unit tests
+## Cấu trúc dự án (chính)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- `src/app/` — mã nguồn ứng dụng
+	- `core/` — repositories và services cốt lõi
+		- `repositories/` — `stock.repository.ts`, `user.repository.ts`
+		- `services/` — `stock.service.ts`, `user.service.ts`
+	- `features/` — các feature module như `auth` (login, register)
+	- `model/` — các model dữ liệu (`stock.ts`, `user.model.ts`, `exchange.model.ts`, ...)
+	- `stock/` — component liên quan đến quản lý cổ phiếu (tạo, chi tiết, item, ...)
+	- `shared/` — thành phần dùng chung (ví dụ `stock-list`)
 
-```bash
-ng test
-```
+## Tính năng
 
-## Running end-to-end tests
+- Xem danh sách cổ phiếu
+- Tạo cổ phiếu (template-driven và reactive forms có ví dụ)
+- Xem chi tiết cổ phiếu
+- Đăng nhập/Đăng ký (mẫu trong `features/auth`)
 
-For end-to-end (e2e) testing, run:
+## Dữ liệu mẫu
 
-```bash
-ng e2e
-```
+Có một file `assets/data.json` dùng làm dữ liệu mẫu. Bạn có thể thay đổi để thử nghiệm.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Môi trường
 
-## Additional Resources
+- `src/environments/environment.ts` và `src/environments/environment.development.ts` để cấu hình API hoặc flag phát triển.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Ghi chú
+
+- Đây là một project demo; cần bổ sung xử lý lỗi, bảo mật, và kiểm thử nếu dùng thực tế.
+
+## Liên hệ
+
+Nếu cần trợ giúp hoặc muốn mở rộng, hãy mở issue hoặc gửi PR.
