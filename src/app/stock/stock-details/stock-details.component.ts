@@ -1,4 +1,3 @@
-import { Stock } from './../../model/stock';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
