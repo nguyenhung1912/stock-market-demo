@@ -29,9 +29,7 @@
       (click)="toggleFavorite.emit(stock)"
       [title]="stock.favorite ? 'Remove Favorite' : 'Add to Favorite'"
     >
-      <mat-icon [style.color]="stock.favorite === true || stock.favorite ? '#ff5252' : '#555'"
-        >favorite</mat-icon
-      >
+      <mat-icon [style.color]="stock.favorite ? '#ff5252' : '#555'">favorite</mat-icon>
     </button>
 
     <button mat-icon-button style="color: #2196f3" (click)="view.emit(stock)" title="View">
