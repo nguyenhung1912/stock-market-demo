@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from './core/services/auth.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    RouterModule,
-    MatToolbarModule,
-    MatButtonModule
-  ],
+  standalone: true,
+  imports: [RouterModule, CommonModule, MatIcon],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  title = 'Stock Admin';
+  
+  constructor(public authService: AuthService, private router: Router) {}
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

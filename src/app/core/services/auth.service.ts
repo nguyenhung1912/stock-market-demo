@@ -2,33 +2,36 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { UserRepository } from '../repositories/user.repository';
 import { User } from '../../model/user.model';
+import { UserStoreService } from './user-store.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private loggedInUserKey = 'loggedInUser';
-
-  constructor(private userRepo: UserRepository) {}
+  constructor(
+    private userRepo: UserRepository,
+    private userStore: UserStoreService 
+  ) {}
 
   login(username: string, password: string): Observable<User[]> {
     return this.userRepo.login(username, password).pipe(
-      tap((users) => {
+      tap(users => {
         if (users.length > 0) {
-          localStorage.setItem(this.loggedInUserKey, JSON.stringify(users[0]));
+          const user = users[0];
+          const mockToken = `fake-jwt-token-for-${user.username}`;
+          
+          this.userStore.setToken(mockToken);
+          
+          localStorage.setItem('currentUser', JSON.stringify(user));
         }
-      }),
+      })
     );
   }
 
   logout(): void {
-    localStorage.removeItem(this.loggedInUserKey);
-  }
-
-  getCurrentUser(): User | null {
-    const user = localStorage.getItem(this.loggedInUserKey);
-    return user ? JSON.parse(user) : null;
+    this.userStore.removeToken();
+    localStorage.removeItem('currentUser');
   }
 
   isLoggedIn(): boolean {
-    return !!this.getCurrentUser();
+    return this.userStore.isLoggedIn();
   }
 }

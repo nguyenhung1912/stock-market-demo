@@ -1,76 +1,79 @@
-.sidenav-container {
-  height: 100vh;
+.app-layout {
+  min-height: 100vh;
   background-color: #121212;
 }
 
-.sidenav {
-  width: 260px;
-  background-color: #1a1a1a;
-  border-right: 1px solid #333;
-}
-
-.sidenav-header {
-  padding: 30px 20px;
-  text-align: center;
-  background-color: #222;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 15px 40px;
   border-bottom: 1px solid #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.sidenav-header h2 {
-  margin: 10px 0 0 0;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.menu-label {
-  padding: 15px 20px 5px;
-  font-size: 0.8rem;
-  color: #888;
-  font-weight: bold;
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #44d265;
   letter-spacing: 1px;
 }
 
-.mat-mdc-list-item {
-  margin-bottom: 8px !important;
-  border-radius: 8px 0 0 8px !important;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
-.mat-mdc-list-item .mdc-list-item__primary-text,
-.mat-mdc-list-item mat-icon {
-  color: #e0e0e0 !important;
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-.active-link {
-  background-color: rgba(68, 210, 101, 0.15) !important;
-  border-right: 4px solid #44d265 !important;
+.nav-links a:hover {
+  color: #fff;
+  background-color: #333;
 }
 
-.active-link .mdc-list-item__primary-text,
-.active-link mat-icon {
-  color: #44d265 !important;
+.nav-links a.active {
+  color: #44d265;
+  background-color: rgba(68, 210, 101, 0.1);
+  border-bottom: 2px solid #44d265;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ff5252;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
   font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.header-toolbar {
-  background-color: #1f1f1f;
-  color: #ffffff !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 2;
+.btn-logout:hover {
+  background-color: #d32f2f;
 }
 
-.header-toolbar mat-icon {
-  color: #ffffff;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.main-content {
-  padding: 24px;
-  height: calc(100vh - 64px);
-  overflow-y: auto;
-  box-sizing: border-box;
-  color: #ffffff;
+.main-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }

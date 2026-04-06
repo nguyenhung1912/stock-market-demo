@@ -1,70 +1,27 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" opened class="sidenav">
-    <div class="sidenav-header">
-      <mat-icon style="font-size: 40px; width: 40px; height: 40px; color: #44d265"
-        >trending_up</mat-icon
-      >
-      <h2>Stock Admin</h2>
-    </div>
+@if (isLoggedIn) {
+  <div class="app-layout">
+    <nav class="navbar">
+      <div class="nav-brand">StockMarket</div>
 
-    <mat-nav-list>
-      <div class="menu-label">DASHBOARD</div>
+      <ul class="nav-links">
+        <li><a routerLink="/stocks" routerLinkActive="active">All Stocks</a></li>
+        <li><a routerLink="/favorites" routerLinkActive="active">Favorites</a></li>
+        <li><a routerLink="/create" routerLinkActive="active">Create Stock</a></li>
+      </ul>
 
-      <a
-        mat-list-item
-        routerLink="/stocks"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <mat-icon matListItemIcon>list_alt</mat-icon>
-        <span matListItemTitle>Stock List (GET)</span>
-      </a>
+      <div class="nav-user">
+        <button class="btn-logout" (click)="logout()">
+          <mat-icon style="font-size: 18px; height: 18px; width: 18px">logout</mat-icon>
+          Logout
+        </button>
+      </div>
+    </nav>
 
-      <a
-        mat-list-item
-        routerLink="/favorites"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <mat-icon matListItemIcon style="color: #ff5252">favorite</mat-icon>
-        <span matListItemTitle>Favorite Stocks</span>
-      </a>
-
-      <a mat-list-item routerLink="/stocks/create" routerLinkActive="active-link">
-        <mat-icon matListItemIcon>add_circle_outline</mat-icon>
-        <span matListItemTitle>Create Stock (POST)</span>
-      </a>
-
-      <mat-divider style="margin: 15px 0; border-color: #333"></mat-divider>
-
-      <div class="menu-label">ACCOUNT</div>
-
-      <a mat-list-item routerLink="/login" routerLinkActive="active-link">
-        <mat-icon matListItemIcon>login</mat-icon>
-        <span matListItemTitle>Login</span>
-      </a>
-
-      <a mat-list-item routerLink="/register" routerLinkActive="active-link">
-        <mat-icon matListItemIcon>person_add</mat-icon>
-        <span matListItemTitle>Register</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="header-toolbar">
-      <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>{{ title }}</span>
-      <span class="spacer"></span>
-      <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <div class="main-content">
+    <main class="main-container">
       <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </main>
+  </div>
+
+} @else {
+  <router-outlet></router-outlet>
+}
