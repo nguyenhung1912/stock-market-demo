@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
-import { StockApi } from '../../model/stock-api.model';
 import { Exchange } from '../../model/exchange.model';
-import { Stock } from '../../model/stock';
+import { Stock } from '../../model/stock.model';
 
 @Injectable({ providedIn: 'root' })
 export class StockRepository {
@@ -13,24 +12,29 @@ export class StockRepository {
 
     constructor(private http: HttpClient) {}
 
-    findAll(): Observable<StockApi[]> {
-        return this.http.get<StockApi[]>(this.stockUrl);
+    findAll(): Observable<Stock[]> {
+        return this.http.get<Stock[]>(this.stockUrl).pipe(
+            map(stocks => stocks.map(stock => ({
+                ...stock,
+                favorite: stock.favorite === true || String(stock.favorite) === 'true'
+            })))
+        )
     }
 
-    findById(id: string): Observable<StockApi> {
-        return this.http.get<StockApi>(`${this.stockUrl}/${id}`);
+    findById(id: string): Observable<Stock> {
+        return this.http.get<Stock>(`${this.stockUrl}/${id}`);
     }
 
-    create(stock: Stock): Observable<StockApi> {
-        return this.http.post<StockApi>(this.stockUrl, stock);
+    create(stock: Stock): Observable<Stock> {
+        return this.http.post<Stock>(this.stockUrl, stock);
     }
 
-    update(id: string, stock: Stock): Observable<StockApi> {
-        return this.http.put<StockApi>(`${this.stockUrl}/${id}`, stock);
+    update(id: string, stock: Stock): Observable<Stock> {
+        return this.http.put<Stock>(`${this.stockUrl}/${id}`, stock);
     }
 
-    patch(id: string, partial: Partial<StockApi>): Observable<StockApi> {
-        return this.http.patch<StockApi>(`${this.stockUrl}/${id}`, partial);
+    patch(id: string, partial: Partial<Stock>): Observable<Stock> {
+        return this.http.patch<Stock>(`${this.stockUrl}/${id}`, partial);
     }
 
     remove(id: string): Observable<void> {

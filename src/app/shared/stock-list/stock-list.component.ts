@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Stock } from './../../model/stock';
-import { ChangeDetectorRef, OnInit } from '@angular/core';
-import { Component } from '@angular/core';
-import { StockItemComponent } from '../../stock/stock-item/stock-item.component';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StockApi } from '../../model/stock-api.model';
+import { ToastrService } from 'ngx-toastr';
+import { StockItemComponent } from '../../stock/stock-item/stock-item.component';
 import { StockService } from '../../core/services/stock.service';
+import { Stock } from '../../model/stock.model';
 
 @Component({
   selector: 'app-stock-list',
@@ -18,6 +16,11 @@ import { StockService } from '../../core/services/stock.service';
 export class StockListComponent implements OnInit {
   allStocks: Stock[] = [];
   filteredStocks: Stock[] = [];
+
+  paginatedStocks: Stock[] = [];
+  currentPage: number = 1;
+  pageSize: number = 7;
+
   searchText: string = '';
   isFavoritePage = false;
   selectedStock: Stock | null = null;
@@ -27,11 +30,11 @@ export class StockListComponent implements OnInit {
     private toastr: ToastrService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
-    this.route.url.subscribe(url => {
+    this.route.url.subscribe((url) => {
       this.isFavoritePage = url.length > 0 && url[0].path === 'favorites';
       this.loadStocks();
     });
@@ -39,18 +42,16 @@ export class StockListComponent implements OnInit {
 
   loadStocks() {
     this.stockService.getStocks().subscribe({
-      next: (data: StockApi[]) => {
-        this.allStocks = data.map(s =>
-          new Stock(s.name, s.code, s.price, s.previousPrice, s.favorite, s.exchange, s.id)
-        );
+      next: (data: Stock[]) => {
+        this.allStocks = data;
         this.filterData();
         this.cdr.markForCheck();
       },
       error: (err) => {
         this.toastr.error('Cannot connect to the API. Please check the JSON Server!');
         console.error(err);
-      }
-    })
+      },
+    });
   }
 
   onSearch() {
@@ -59,18 +60,45 @@ export class StockListComponent implements OnInit {
 
   filterData() {
     let tempStocks = [...this.allStocks];
+
     if (this.isFavoritePage) {
-      tempStocks = tempStocks.filter(s => s.favorite === true || (s.favorite as any) === 'true');
+      tempStocks = tempStocks.filter((s) => s.favorite === true);
     }
 
     if (!this.searchText) {
       this.filteredStocks = tempStocks;
     } else {
-      const lowerText = this.searchText.toLowerCase();
-      this.filteredStocks = tempStocks.filter(s =>
-        s.name.toLowerCase().includes(lowerText) ||
-        s.code.toLowerCase().includes(lowerText)
+      const lowerText = this.searchText.trim().toLowerCase();
+      this.filteredStocks = tempStocks.filter(
+        (s) => s.name.toLowerCase().includes(lowerText) || s.code.toLowerCase().includes(lowerText),
       );
+    }
+
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+
+  updatePagination(){
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedStocks = this.filteredStocks.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredStocks.length / this.pageSize);
+  }
+
+  nextPage(){
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  prevPage(){
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
     }
   }
 
@@ -81,12 +109,12 @@ export class StockListComponent implements OnInit {
   }
 
   openUpdateDialog(stock: Stock) {
-    this.selectedStock = { ...stock } as Stock;
+    this.selectedStock = { ...stock };
   }
 
   deleteStock(code: string) {
-    const stock = this.allStocks.find(s => s.code === code);
-    if (!stock || stock.id == undefined) return;
+    const stock = this.allStocks.find((s) => s.code === code);
+    if (!stock || !stock.id) return;
 
     if (confirm(`Are you sure you want to delete ${code}?`)) {
       this.stockService.delete(stock.id).subscribe({
@@ -94,7 +122,7 @@ export class StockListComponent implements OnInit {
           this.toastr.success(`Deleted ${code}`);
           this.loadStocks();
         },
-        error: () => this.toastr.error('Delete failed!')
+        error: () => this.toastr.error('Delete failed!'),
       });
     }
   }
@@ -105,7 +133,7 @@ export class StockListComponent implements OnInit {
 
   saveUpdate() {
     if (this.selectedStock && this.selectedStock.id !== undefined) {
-      const oldStockData = this.allStocks.find(s => s.id === this.selectedStock!.id);
+      const oldStockData = this.allStocks.find((s) => s.id === this.selectedStock!.id);
 
       if (oldStockData) {
         this.selectedStock.previousPrice = oldStockData.price;
@@ -117,7 +145,7 @@ export class StockListComponent implements OnInit {
           this.closeDialog();
           this.loadStocks();
         },
-        error: () => this.toastr.error('Update failed!')
+        error: () => this.toastr.error('Update failed!'),
       });
     }
   }
@@ -125,14 +153,14 @@ export class StockListComponent implements OnInit {
   onToggleFavorite(stock: Stock) {
     if (!stock.id) return;
 
-    const newFavStatus = !(stock.favorite === true || (stock.favorite as any) === 'true');
+    const newFavStatus = !stock.favorite;
 
     this.stockService.patch(stock.id, { favorite: newFavStatus }).subscribe({
       next: () => {
         this.toastr.success(newFavStatus ? 'Added to Favorites' : 'Removed from Favorites');
         this.loadStocks();
       },
-      error: () => this.toastr.error('Failed to update favorite status!')
+      error: () => this.toastr.error('Failed to update favorite status!'),
     });
   }
 }

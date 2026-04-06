@@ -4,9 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { StockApi } from '../../model/stock-api.model';
 import { StockService } from '../../core/services/stock.service';
 import { catchError, EMPTY, Observable, switchMap } from 'rxjs';
+import { Stock } from '../../model/stock.model';
 
 @Component({
   selector: 'app-stock-details',
@@ -15,7 +15,7 @@ import { catchError, EMPTY, Observable, switchMap } from 'rxjs';
   styleUrl: './stock-details.component.css',
 })
 export class StockDetailsComponent implements OnInit {
-  stock$!: Observable<StockApi>;
+  stock$!: Observable<Stock>;
 
   constructor(
     private route: ActivatedRoute,

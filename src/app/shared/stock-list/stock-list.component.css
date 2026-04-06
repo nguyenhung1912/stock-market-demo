@@ -104,3 +104,42 @@
   background-color: #44d265;
   color: black;
 }
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #222;
+  border-top: 1px solid #333;
+  gap: 15px;
+}
+
+.page-info {
+  color: #aaa;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.btn-page {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-page:hover:not(:disabled) {
+  background-color: #44d265;
+  color: #000;
+  border-color: #44d265;
+}
+
+.btn-page:disabled {
+  background-color: #1a1a1a;
+  color: #555;
+  cursor: not-allowed;
+  border-color: #222;
+}
