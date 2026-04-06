@@ -18,7 +18,7 @@
   </div>
 
   <div class="list-body">
-    @for (item of filteredStocks; track item.id) {
+    @for (item of paginatedStocks; track item.id) {
       <app-stock-item
         [stock]="item"
         (view)="viewStockDetail($event)"
@@ -29,6 +29,18 @@
       </app-stock-item>
     }
   </div>
+
+  @if (filteredStocks.length > 0) {
+    <div class="pagination-controls">
+      <button class="btn-page" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+
+      <span class="page-info"> Page {{ currentPage }} of {{ totalPages }} </span>
+
+      <button class="btn-page" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Next
+      </button>
+    </div>
+  }
 </div>
 
 @if (selectedStock) {

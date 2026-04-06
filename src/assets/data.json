@@ -1,103 +1,193 @@
 {
   "stocks": [
     {
-      "name": "Microsoft Corporation",
-      "code": "MSFT",
-      "price": 411,
-      "previousPrice": 410,
-      "favorite": true,
-      "exchange": "AMEX",
-      "id": "5a8f"
+      "id": "s201",
+      "name": "PayPal Holdings, Inc.",
+      "code": "PYPL",
+      "price": 62.15,
+      "previousPrice": 63.4,
+      "favorite": false,
+      "exchange": "NASDAQ"
     },
     {
-      "name": "Tesla, Inc.",
-      "code": "TSLA",
-      "price": 180,
-      "previousPrice": 172.9,
+      "id": "s202",
+      "name": "Adobe Inc.",
+      "code": "ADBE",
+      "price": 520.75,
+      "previousPrice": 515.2,
       "favorite": true,
-      "exchange": "AMEX",
-      "id": "24c0"
+      "exchange": "NASDAQ"
     },
     {
-      "name": "NVIDIA Corporation",
-      "code": "NVIDIA",
-      "price": 890.1,
-      "previousPrice": 890.15,
-      "favorite": true,
-      "exchange": "HOSE",
-      "id": "9e23"
+      "id": "s203",
+      "name": "Oracle Corporation",
+      "code": "ORCL",
+      "price": 125.9,
+      "previousPrice": 124.3,
+      "favorite": "true",
+      "exchange": "NYSE"
     },
     {
-      "id": "bd52",
-      "name": "Amazon.com, Inc.",
-      "code": "AMZN",
-      "price": 178.25,
-      "previousPrice": 178.25,
+      "id": "s204",
+      "name": "Cisco Systems, Inc.",
+      "code": "CSCO",
+      "price": 48.6,
+      "previousPrice": 49.1,
+      "favorite": false,
+      "exchange": "NASDAQ"
+    },
+    {
+      "id": "s205",
+      "name": "Zoom Video Communications",
+      "code": "ZM",
+      "price": 70.25,
+      "previousPrice": 68.9,
+      "favorite": false,
+      "exchange": "NASDAQ"
+    },
+    {
+      "id": "s206",
+      "name": "Spotify Technology",
+      "code": "SPOT",
+      "price": 310.5,
+      "previousPrice": 305,
       "favorite": true,
+      "exchange": "NYSE"
+    },
+    {
+      "id": "s207",
+      "name": "Airbnb, Inc.",
+      "code": "ABNB",
+      "price": 165.4,
+      "previousPrice": 167.2,
+      "favorite": false,
+      "exchange": "NASDAQ"
+    },
+    {
+      "id": "s208",
+      "name": "Berkshire Hathaway Inc.",
+      "code": "BRK.A",
+      "price": 620000,
+      "previousPrice": 618000,
+      "favorite": false,
+      "exchange": "NYSE"
+    },
+    {
+      "id": "s209",
+      "name": "Goldman Sachs Group",
+      "code": "GS",
+      "price": 390.2,
+      "previousPrice": 392.5,
+      "favorite": true,
+      "exchange": "NYSE"
+    },
+    {
+      "id": "s210",
+      "name": "JPMorgan Chase & Co.",
+      "code": "JPM",
+      "price": 198.3,
+      "previousPrice": 200.1,
+      "favorite": false,
+      "exchange": "NYSE"
+    },
+    {
+      "id": "s211",
+      "name": "Hoa Phat Group",
+      "code": "HPG",
+      "price": 28000,
+      "previousPrice": 27500,
+      "favorite": true,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "s212",
+      "name": "Techcombank",
+      "code": "TCB",
+      "price": 42000,
+      "previousPrice": 41500,
+      "favorite": false,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "s213",
+      "name": "VPBank",
+      "code": "VPB",
+      "price": 21000,
+      "previousPrice": 21500,
+      "favorite": false,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "s214",
+      "name": "Masan Group",
+      "code": "MSN",
+      "price": 75000,
+      "previousPrice": 76000,
+      "favorite": true,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "s215",
+      "name": "Novaland",
+      "code": "NVL",
+      "price": 18000,
+      "previousPrice": 18500,
+      "favorite": false,
+      "exchange": "HOSE"
+    },
+    {
+      "id": "s216",
+      "name": "Deutsche Bank",
+      "code": "DB",
+      "price": 15.8,
+      "previousPrice": 15.5,
+      "favorite": false,
       "exchange": "LSE"
     },
     {
-      "name": "Apple Inc.'",
-      "code": "AAPL",
-      "price": 140,
-      "previousPrice": 189.45,
-      "favorite": false,
-      "exchange": "KRX",
-      "id": "5c42"
+      "id": "s217",
+      "name": "Siemens AG",
+      "code": "SIE",
+      "price": 180.2,
+      "previousPrice": 179,
+      "favorite": true,
+      "exchange": "EURONEXT"
     },
     {
-      "id": "6a40",
-      "name": "Netflix, Inc.",
-      "code": "NFLX",
-      "price": 620.5,
-      "previousPrice": 620.5,
+      "id": "s218",
+      "name": "Sony Group Corporation",
+      "code": "SONY",
+      "price": 85.3,
+      "previousPrice": 84,
       "favorite": false,
-      "exchange": "HNX"
+      "exchange": "TSE"
     },
     {
-      "id": "242f",
-      "name": "Meta Platforms, Inc.",
-      "code": "META",
-      "price": 510.66,
-      "previousPrice": 510.66,
-      "favorite": false,
+      "id": "s219",
+      "name": "Tencent Holdings",
+      "code": "TCEHY",
+      "price": 48.7,
+      "previousPrice": 49.2,
+      "favorite": "false",
       "exchange": "HKEX"
     },
     {
-      "id": "d550",
-      "name": "Alphabet Inc. Class A",
-      "code": "GOOGL",
-      "price": 140.22,
-      "previousPrice": 140.22,
-      "favorite": false,
-      "exchange": "LSE"
-    },
-    {
-      "id": "5ecc",
-      "name": "Vietcombank",
-      "code": "VCB",
-      "price": 90000,
-      "previousPrice": 90000,
-      "favorite": false,
-      "exchange": "HOSE"
-    },
-    {
-      "id": "01ee",
-      "name": "Vingroup Joint Stock Company",
-      "code": "VIC",
-      "price": 45000,
-      "previousPrice": 45000,
-      "favorite": false,
-      "exchange": "HOSE"
-    },
-    {
-      "id": "4d2d",
-      "name": "Vingroup JSC",
-      "code": "VIC",
-      "price": 51.2,
-      "previousPrice": 51.2,
+      "id": "s220",
+      "name": "Baidu, Inc.",
+      "code": "BIDU",
+      "price": 102.4,
+      "previousPrice": 100.9,
       "favorite": true,
-      "exchange": "HOSE"
+      "exchange": "NASDAQ"
+    },
+    {
+      "id": "d340",
+      "name": "Salesforce, Inc.",
+      "code": "CRM",
+      "price": 287.45,
+      "previousPrice": 287.45,
+      "favorite": false,
+      "exchange": "NYSE"
     }
   ],
   "exchanges": [

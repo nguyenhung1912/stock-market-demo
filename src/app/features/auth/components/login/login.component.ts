@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { Router, RouterModule } from "@angular/router";
-import { UserService } from "../../../../core/services/user.service";
-import { ToastrService } from "ngx-toastr";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,30 +11,28 @@ import { ToastrService } from "ngx-toastr";
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-}) 
+})
 export class LoginComponent {
   username = '';
   password = '';
 
   constructor(
-    private userService: UserService, 
-    private router: Router, 
-    private toastr: ToastrService
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   onLogin() {
-    this.userService.getUsers().subscribe({
+    this.authService.login(this.username, this.password).subscribe({
       next: (users) => {
-        const user = users.find(u => u.username === this.username && u.password === this.password);
-        if (user) {
+        if (users.length > 0) {
           this.toastr.success('Login successful!');
-          localStorage.setItem('loggedInUser', JSON.stringify(user));
-          this.router.navigate(['/stocks']); 
+          this.router.navigate(['/stocks']);
         } else {
           this.toastr.error('Invalid username or password!');
         }
       },
-      error: () => this.toastr.error('Connection error! Check JSON Server.')
+      error: () => this.toastr.error('Connection error! Check JSON Server.'),
     });
   }
 }
