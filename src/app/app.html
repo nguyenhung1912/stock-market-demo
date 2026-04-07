@@ -7,9 +7,18 @@
         <li><a routerLink="/stocks" routerLinkActive="active">All Stocks</a></li>
         <li><a routerLink="/favorites" routerLinkActive="active">Favorites</a></li>
         <li><a routerLink="/create" routerLinkActive="active">Create Stock</a></li>
+
+        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/portfolio" routerLinkActive="active">Portfolio</a></li>
+        <li><a routerLink="/news" routerLinkActive="active">Market News</a></li>
       </ul>
 
       <div class="nav-user">
+        <button class="btn-profile" routerLink="/profile" routerLinkActive="active">
+          <mat-icon style="font-size: 18px; height: 18px; width: 18px">account_circle</mat-icon>
+          {{ authService.getCurrentUser()?.username }}
+        </button>
+
         <button class="btn-logout" (click)="logout()">
           <mat-icon style="font-size: 18px; height: 18px; width: 18px">logout</mat-icon>
           Logout
@@ -21,7 +30,6 @@
       <router-outlet></router-outlet>
     </main>
   </div>
-
 } @else {
   <router-outlet></router-outlet>
 }
