@@ -4,9 +4,9 @@
       "id": "s201",
       "name": "PayPal Holdings, Inc.",
       "code": "PYPL",
-      "price": 62.14,
-      "previousPrice": 62.15,
-      "favorite": true,
+      "price": 65,
+      "previousPrice": 62.14,
+      "favorite": false,
       "exchange": "NASDAQ"
     },
     {
@@ -352,6 +352,26 @@
       "id": "3494",
       "username": "a1",
       "password": "abc"
+    },
+    {
+      "id": "f7af",
+      "username": "abc",
+      "password": "123"
+    },
+    {
+      "id": "cdc7",
+      "username": "hung",
+      "password": "123"
+    },
+    {
+      "id": "e91e",
+      "username": "hung1",
+      "password": "hung1"
+    },
+    {
+      "id": "a9f8",
+      "username": "hungg",
+      "password": "hungg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
