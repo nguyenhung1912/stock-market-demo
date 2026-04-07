@@ -5,6 +5,7 @@ import { RegisterComponent } from './features/auth/components/register/register.
 import { StockListComponent } from './shared/stock-list/stock-list.component';
 import { CreateStockReactiveComponent } from './stock/create-stock-reactive/create-stock-reactive.component';
 import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
+import { ProfileComponent } from './features/user/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,5 +18,7 @@ export const routes: Routes = [
   { path: 'create', component: CreateStockReactiveComponent, canActivate: [authGuard] },
   { path: 'stock/:id', component: StockDetailsComponent, canActivate: [authGuard] },
   
-  { path: '**', redirectTo: 'stocks' }
+  { path: '**', redirectTo: 'stocks' },
+
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
 ];
