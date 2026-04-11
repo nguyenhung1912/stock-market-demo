@@ -314,64 +314,24 @@
   ],
   "users": [
     {
-      "id": "1",
+      "id": "445f",
       "username": "admin",
-      "password": "123"
+      "password": "123456"
     },
     {
-      "id": "3c16",
-      "username": "admin1",
-      "password": "123"
-    },
-    {
-      "id": "d8f0",
-      "username": "admin11",
-      "password": "123"
-    },
-    {
-      "id": "192b",
-      "username": "user1",
-      "password": "123"
-    },
-    {
-      "id": "0763",
-      "username": "abc1",
-      "password": "abc2"
-    },
-    {
-      "id": "59bf",
-      "username": "b1",
-      "password": "b1"
-    },
-    {
-      "id": "d761",
-      "username": "b1",
-      "password": "b1"
-    },
-    {
-      "id": "3494",
-      "username": "a1",
-      "password": "abc"
-    },
-    {
-      "id": "f7af",
-      "username": "abc",
-      "password": "123"
-    },
-    {
-      "id": "cdc7",
+      "id": "96b4",
       "username": "hung",
-      "password": "123"
+      "password": "123456"
     },
     {
-      "id": "e91e",
-      "username": "hung1",
-      "password": "hung1"
+      "id": "f943",
+      "username": "abcxyz",
+      "password": "123456"
     },
     {
-      "id": "a9f8",
-      "username": "hungg",
-      "password": "hungg"
+      "id": "60a2",
+      "username": "nghung1912",
+      "password": "123456"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
