@@ -19,6 +19,6 @@ export class UserRepository {
   }
 
   login(username: string, password: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}?username=${username}&password=${password}`);
+    return this.findAll();
   }
 }
