@@ -6,12 +6,13 @@ import { StockListComponent } from './shared/stock-list/stock-list.component';
 import { CreateStockReactiveComponent } from './stock/create-stock-reactive/create-stock-reactive.component';
 import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
 import { ProfileComponent } from './features/user/profile/profile.component';
+import { guestGuard } from './core/guards/guest.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent ,canActivate: [guestGuard]},
+  { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
 
   { path: 'stocks', component: StockListComponent, canActivate: [authGuard] },
   { path: 'favorites', component: StockListComponent, canActivate: [authGuard] },
