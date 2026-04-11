@@ -108,3 +108,14 @@ button:hover {
   text-decoration: none;
   font-weight: bold;
 }
+
+input.invalid {
+  border-color: #ff5252;
+  background-color: rgba(255, 82, 82, 0.1);
+}
+
+.error-msg {
+  color: #ff5252;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
